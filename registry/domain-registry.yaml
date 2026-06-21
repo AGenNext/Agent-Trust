@@ -1,0 +1,125 @@
+version: 1
+kind: AGenNextDomainTrustRegistry
+metadata:
+  name: agennext-domain-trust-registry
+  owner: Chinmay Panda
+  handle: "@thefractionalpm"
+  status: draft
+  created: "2026-06-21"
+  purpose: "Bind known domains and subdomains into a trust registry for governance, publication, identity, and agent authority boundaries."
+principles:
+  - deny_by_default
+  - domain_bound_identity
+  - explicit_authority_only
+  - provenance_required
+  - human_at_gate
+  - no_ambient_authority
+  - no_unverified_execution
+root_domains:
+  - domain: agnxxt.com
+    org: AGenNext
+    role: primary-platform-domain
+    status: active-known
+    surfaces:
+      - site.agnxxt.com
+      - developers.agnxxt.com
+      - book.agnxxt.com
+      - console.agnxxt.com
+    required_controls:
+      - dns_ownership_verification
+      - https_tls
+      - security_headers
+      - robots_and_sitemap
+      - canonical_urls
+      - did_well_known
+      - security_txt
+      - provenance_manifest
+  - domain: openautonomyx.com
+    org: openautonomyx
+    role: autonomy-and-trust-publication-domain
+    status: active-known
+    required_controls:
+      - dns_ownership_verification
+      - https_tls
+      - canonical_urls
+      - did_well_known
+      - security_txt
+      - provenance_manifest
+  - domain: unboxd.cloud
+    org: unboxd-cloud
+    role: cloud-and-platform-domain
+    status: active-known
+    surfaces:
+      - blog.unboxd.cloud
+    required_controls:
+      - dns_ownership_verification
+      - https_tls
+      - security_headers
+      - did_well_known
+      - provenance_manifest
+  - domain: open-data.world
+    org: OpenDataWorld
+    role: data-and-fabric-domain
+    status: active-known
+    surfaces:
+      - vps.open-data.world
+    required_controls:
+      - dns_ownership_verification
+      - https_tls
+      - did_well_known
+      - provenance_manifest
+  - domain: kubecontainer.xyz
+    org: AGenNext
+    role: kubecontainer-experimental-domain
+    status: active-known
+    surfaces:
+      - kubecontainer.xyz
+      - kubecontainer.xyz/panel.html
+      - kubecontainer.xyz/book/index.html
+    required_controls:
+      - dns_ownership_verification
+      - https_tls
+      - canonical_urls
+      - provenance_manifest
+  - domain: chinmay.sbs
+    org: personal-author-surface
+    role: book-and-author-domain
+    status: active-known
+    required_controls:
+      - dns_ownership_verification
+      - https_tls
+      - canonical_urls
+      - provenance_manifest
+trust_bindings:
+  github_orgs:
+    - AGenNext
+    - openautonomyx
+    - unboxd-cloud
+    - OpenDataWorld
+    - OpenSaaSApps
+    - opensaaslabs
+    - openagx
+    - autonomyxpro
+    - didoneworld
+    - TheFraudDatabase
+    - SovereignBharat
+    - open-lmx
+    - OpenFrameworks-World
+    - sovereignpbulishing
+    - fabric-db
+    - Verified-Services-Online
+verification_artifacts:
+  recommended_paths:
+    - /.well-known/security.txt
+    - /.well-known/did.json
+    - /.well-known/agent-trust.json
+    - /autonomyx.manifest.json
+    - /agennext.manifest.json
+    - /sitemap.xml
+    - /robots.txt
+policy:
+  default_state: untrusted_until_verified
+  browser_surface: governed
+  agent_surface: capability_bound
+  publication_surface: canonical_url_required
+  execution_surface: explicit_policy_required
